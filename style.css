@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Side navigation menu Start*/
+.navbar {
+    height: 100vh;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #212a3e;
+    padding-top: 20px;
+}
+
+.navbar a {
+    margin: 20px;
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .btn {
+    margin-top: 100%;
+}
+
+.navbar a:hover {
+    background-color: #445880;
+}
+
+.navbar a.active {
+    background-color: #394867;
+}
+/* Side navigation menu end*/
+
+
+/* Upload or Send file Container Start */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.file-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.upload-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+}
+/* Upload or Send file Container End */
+
+
+
+/* Login & Register page styles start */
+.form-container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-bottom: 60px;
+    background: #eee;
+}
+
+.form-container form{
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    max-width: 500px;
+   /* width: 100%; */
+   text-align: center; 
+}
+
+.form-container form h3{
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    /* text-align: center; */ 
+    color: #333;
+}
+
+.form-container form input,
+.form-container form select{ 
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 17;
+    margin: 8px 0;
+    background: #eee;
+    border-radius: 5px;
+}
+
+.form-container form select option{
+    background: #fff; ;
+}
+
+.form-container form .form-btn{
+    background: #333;
+    color: #eee;
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+.form-container form .form-btn:hover{
+    background: crimson;
+}
+
+.form-container form p{
+    font-size: 20px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.form-container form p a{
+    color: crimson;
+    text-decoration: underline;
+}
+
+.form-container form  .error-msg{
+    margin: 10px 0;
+    display: block;
+    background: crimson;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px; 
+}
+/* Login & Register page styles end */
+
+
+/* landing page Start */
+
+.landing-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.landing-container h1 {
+    color: #333;
+}
+
+.landing-container p {
+    color: #666;
+}
+
+.landing-container .button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.landing-container .button:hover {
+    background-color: #0056b3;
+}
+/* Landing page End*/
+
+
+
