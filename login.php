@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
 
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
     $pass = md5($_POST["password"]);
-    
+
 
     $select = " SELECT * FROM users WHERE email = '{$email}' && password = '{$pass}' ";
     // $select2 = " SELECT  FROM applications";
@@ -26,7 +26,6 @@ if (isset($_POST["submit"])) {
             $_SESSION["admin_email"] = $row["email"];
 
             header("Location: admin.php");
-
         } elseif ($row["role"] == "client") {
 
             $_SESSION["client_surname"] = $row["lastname"];
@@ -34,9 +33,8 @@ if (isset($_POST["submit"])) {
             $_SESSION["client_email"] = $row["email"];
 
             header("Location: client.php");
-
-        } 
-    }else{
+        }
+    } else {
         $error[] = "Incorrect email or Password!";
     }
 };
@@ -52,33 +50,46 @@ if (isset($_POST["submit"])) {
     , initial-scale=1.0">
     <title>Login Form</title>
 
-    <!-- custom css file link -->
-    <link rel="stylesheet" href="style.css">
+
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Google Fonts-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css">
+    <!--Google Fonts-->
 
 </head>
 
 <body>
 
     <div class="form-container">
-        <form action="" method="post">
-            <h3>Login now</h3>
+        <form action="" method="post" class="position-absolute top-50 start-50 translate-middle border p-4 rounded-3 shadow-lg">
+            <h3 class="text-center">Login now</h3>
 
-        <?php 
-            if(isset($error)){
-                foreach($error as $error){
-                    echo '<span class="error-msg">' .$error. '</span>';
+            <div class="mb-3">
+            <?php
+            if (isset($error)) {
+                foreach ($error as $error) {
+                    echo '<span class="error-msg">' . $error . '</span>';
                 };
             };
             ?>
+</div>
+            <div class="mb-3">
+                <input type="email" class="form-control" name="email" required placeholder="Enter your email"><br>
+                <input type="password" class="form-control" name="password" required placeholder="Enter your password">
+            </div>
 
-            <input type="email" name="email" required placeholder="Enter your email">
-            <input type="password" name="password" required placeholder="Enter your password">
-
-            <input type="submit" name="submit" value="Login" class="form-btn">
+            <div class="mb-3">
+                <input type="submit" class="form-control btn btn-primary" name="submit" value="Login">
+            </div>
             <p>Don't have an account? <a href="register.php">Register now</a></p>
         </form>
 
     </div>
+
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

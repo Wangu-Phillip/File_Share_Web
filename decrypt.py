@@ -1,21 +1,3 @@
-# from cryptography.fernet import Fernet
-# import sys
-
-# def decrypt_file(encrypted_file_path, key):
-#     cipher = Fernet(key.encode('utf-8'))
-#     with open(encrypted_file_path, 'rb') as f:
-#         data = f.read()
-#     decrypted_data = cipher.decrypt(data)
-#     with open(encrypted_file_path[:-4], 'wb') as f:  # Remove '.enc' extension
-#         f.write(decrypted_data)
-
-# if __name__ == '__main__':
-#     if len(sys.argv) != 3:
-#         print("Usage: python decrypt.py [encrypted_file_path] [encryption_key]")
-#         sys.exit(1)
-#     encrypted_file_path = sys.argv[1]
-#     key = sys.argv[2]
-#     decrypt_file(encrypted_file_path, key)
 
 from cryptography.fernet import Fernet
 import sys
