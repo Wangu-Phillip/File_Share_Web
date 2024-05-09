@@ -85,26 +85,47 @@ if ($result->num_rows > 0) {
                 <?php
                 // Fetch encrypted files associated with the user's email
                 $email = $_SESSION["admin_email"];
-                $sql = "SELECT file_path FROM encrypted_files WHERE email = ?";
+                $sql = "SELECT file_path, upload_time FROM encrypted_files WHERE email = ?";
                 $stmt = $conn->prepare($sql);
                 if (!$stmt) {
                     die('Error preparing statement: ' . $conn->error);
                 }
+
                 $stmt->bind_param("s", $email);
+
                 if (!$stmt->execute()) {
                     die('Error executing statement: ' . $stmt->error);
                 }
+
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo '<tr><td>' . $row["file_path"] . '</td></tr>';
+                        // echo '<tr><td>' . $row["file_path"] . '</td></tr>';
+                        $filePath = $row["file_path"];
+                        $uploadTime = strtotime($row["upload_time"]);
+
+                        // Check if the file can be decrypted
+                        function canDecryptFile($uploadTime)
+                        {
+                            $currentTime = time();
+                            $timeDifference = $currentTime - $uploadTime;
+                            $expirationTime = 1 * 60; // 5 minutes in seconds
+
+                            return $timeDifference <= $expirationTime;
+                        }
+
+                        if (canDecryptFile($uploadTime)) {
+                            echo '<tr><td>' . $filePath . '</td></tr>';
+                        } else {
+                            // File expired, do not display
+                        }
+                    
                     }
                 } else {
                     echo '<tr><td>No files found</td></tr>';
                 }
 
-                $conn->close();
                 ?>
             </tbody>
         </table>
@@ -113,11 +134,16 @@ if ($result->num_rows > 0) {
     </div>
     <br><br>
 
-    <!-- 
-    <div class="container">
-        <h1>File Decryption</h1>
-        <button onclick="decryptFile()">Decrypt File</button>
-    </div> -->
+    <?php
+    // Clean up files older than 5 minutes
+    $sql = "DELETE FROM encrypted_files WHERE upload_time < DATE_SUB(NOW(), INTERVAL 1 MINUTE)";
+    if (!$conn->query($sql)) {
+        die('Error cleaning up files: ' . $conn->error);
+    }
+
+    $conn->close();
+    ?>
+
 </body>
 
 <script>

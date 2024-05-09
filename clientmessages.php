@@ -117,7 +117,7 @@ if ($result->num_rows > 0) {
                         {
                             $currentTime = time();
                             $timeDifference = $currentTime - $uploadTime;
-                            $expirationTime = 1 * 60; // 5 minutes in seconds
+                            $expirationTime = 1 * 60; // 1 minutes in seconds
 
                             return $timeDifference <= $expirationTime;
                         }

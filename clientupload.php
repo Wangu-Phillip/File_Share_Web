@@ -39,6 +39,10 @@ if ($_FILES["fileToUpload"]["error"] == 0) {
 
         // Delete the unencrypted file
         unlink($target_file);
+
+        // Delete the encryption key file
+        unlink('encryption_info.key');
+        
     } else {
         echo "Error uploading file.";
     }
